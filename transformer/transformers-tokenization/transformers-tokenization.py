@@ -75,11 +75,14 @@ class SimpleTokenizer:
         # for key,val in self.vocab:
         #     self.decode_vocab[val]=key
         # self.decode_text=""
-        # self.decode_text=self.id_to_word[ids[0]]
-        # for id in ids[1:]:
-        #     # if id=1
-        #     self.decode_text+=" "+self.id_to_word[id]
-        # # print("text:", self.text, "decode:",decode_text)
-        # return decode_text
+        # # self.decode_text=self.id_to_word[ids[0]]
+        # for id in ids:
+        #     if id not in self.id_to_word:
+        #         self.decode_text+=self.unk_token
+        #     else:
+        #         self.decode_text.join(self.id_to_word[id])
+        # print("decode:",self.id_to_word, ids)
+        # self.decode_text=self.decode_text.lstrip()
+        # return self.decode_text
         return " ".join(self.id_to_word.get(idx, self.unk_token) for idx in ids)
         
