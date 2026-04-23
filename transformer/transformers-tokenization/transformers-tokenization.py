@@ -34,10 +34,6 @@ class SimpleTokenizer:
 
         self.all_word_s=sorted(self.all_word)
         
-        # for index, word in enumerate(self.all_word_s):
-        #     self.vocab[word]=index+4
-
-        # self.vocab_size=len(self.vocab)
         unique_words=self.all_word_s
         # 1. Assign IDs to special tokens
         special_tokens = [self.pad_token, self.unk_token, self.bos_token, self.eos_token]
@@ -71,14 +67,11 @@ class SimpleTokenizer:
         """
         Convert list of token IDs back to text.
         """
-        
         self.decode_text=[]
         for id in ids:
             if id not in self.id_to_word:
                 self.decode_text.append(self.unk_token)
             else:
                 self.decode_text.append(self.id_to_word[id])
-        # self.decode_text=self.decode_text.lstrip()
         return " ".join(self.decode_text)
-        # return " ".join(self.id_to_word.get(idx, self.unk_token) for idx in ids)
         
